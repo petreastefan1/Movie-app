@@ -2,6 +2,8 @@
 import './App.css';
 import {useEffect} from "react";
 import {getMovies} from "./Api";
+import Header from "./Components/Header"
+
 
 function App() {
 
@@ -10,14 +12,25 @@ function App() {
 
         getMovies().then(data => {
 
-           return data.json();
+            return data.json();
         }).then(data=>{
 
             console.log(data);
         })
     }, []);
 
+
+    return(
+        <>
+            <Header/>
+        </>
+
+
+
+    )
+
 }
+
 
 
 

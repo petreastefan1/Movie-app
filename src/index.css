@@ -1,0 +1,212 @@
+*{
+    box-sizing: border-box;
+    background-color: black;
+}
+
+body{
+    margin:0px;
+    padding:0px;
+}
+
+.header-container{
+
+    display:flex;
+    align-items: center;
+    padding-top:10px;
+    padding-bottom:10px;
+    background-color: #121212;
+}
+
+.logo-container{
+    width:max-content;
+    border-radius:10%;
+    background-color: #EDC400;
+    font-weight: 900;
+    color: black;
+    font-size: 23px;
+    padding-left:5px;
+    padding-right:5px;
+    margin:0px;
+    cursor:pointer
+}
+
+.nav-bar{
+    margin:0px auto;
+    display:flex;
+    background-color: #121212;
+    align-items: center;
+}
+
+.menu-btn{
+    display:flex;
+    align-items: center;
+    color:white;
+    border:none;
+    background-color: #121212;
+    border-radius:5px;
+    gap:5px;
+    font-size: 18px;
+    width:100px;
+}
+
+.menu-dropdown{
+    width:5rem;
+    margin-right:10px
+}
+.menu-btn:hover{
+    background-color: #252525
+
+}
+.menu-container{
+    background-color: #121212;
+    margin-left:20px
+}
+
+.fa-bars{
+    color:white;
+}
+
+form, form *{
+    background-color: #121212;
+    color:white;
+    display: flex;
+    gap:0px
+
+
+}
+form{
+    height:30px;
+
+
+}
+
+#search-bar-label:hover{
+    background-color:#d6d2d2;
+    cursor:pointer
+}
+#search-bar-label:hover *{
+    background-color:#d6d2d2
+}
+.test:focus{
+    border-radius: 7px;
+    border:2px solid red;
+}
+
+#search-bar{
+    background-color: white;
+    color:black;
+    border-bottom-right-radius:5px;
+    border-top-right-radius: 5px;
+    width:40rem;
+    border:none;
+    outline: none;
+    padding: 5px;
+    padding-left: 10px;
+    padding-right: 30px;
+    font-size:15px
+}
+
+
+
+
+#search-bar-label{
+    background-color: #FFF;
+    color:black;
+    font-weight: bold;
+    padding-left: 10px;
+    border-bottom-left-radius:5px;
+    border-top-left-radius: 5px;
+    font-size: 15px;
+    display:flex;
+    align-items: center;
+    border-right:1px solid gray ;
+    gap:10px;
+}
+
+.fa-arrow-down{
+    background-color: #FFF;
+    color:black;
+    width:20px;
+    display:flex;
+    align-items: center;
+}
+
+.fa-magnifying-glass{
+display:flex;
+    align-items: center;
+    position:relative;
+    right:25px;
+    background:none;
+    color:black
+}
+
+.fa-magnifying-glass:hover{
+    cursor:pointer
+}
+
+.subscription-text, .subscription-text *{
+    background-color: #121212;
+    display:flex;
+    margin:0px;
+    font-weight: 900;
+    cursor:pointer
+
+}
+
+.subscription-text{
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    color:white;
+    border-radius: 5px;
+}
+
+.subscription-text *{
+    color:#1f86ed
+}
+
+
+.subscription-btn{
+    border:none;
+    background-color: #121212;
+    padding:0px
+}
+.subscription-btn:hover{
+    .subscription-text{
+        background-color: #252525
+    }
+    .subscription-text *{
+        background-color: #252525
+    }
+
+}
+
+.separator{
+    border:1px solid #424242;
+    height:32px;
+    margin-left:5px;
+    margin-right:5px
+}
+
+.menu-size{
+    font-size:17px;
+    margin-right: 10px;
+    margin-left: 10px
+}
+
+.sign-in-btn{
+    text-decoration: none;
+    font-size:17px;
+    background-color: #121212;
+    color:white;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    border-radius:5px;
+}
+
+.sign-in-btn:hover{
+    background-color: #252525
+}
