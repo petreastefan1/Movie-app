@@ -50,6 +50,9 @@ const handleArrowLeft = ()=>{
                             </Col>
                             <Col className="upnext-container" sm={4}>
                                 <p className="upnext-paragraph">Up next</p>
+                                <div>
+
+                                </div>
                             </Col>
                         </Row>
                     </Container>
