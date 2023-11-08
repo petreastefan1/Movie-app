@@ -1,37 +1,58 @@
-
 import './App.css';
 import {useEffect} from "react";
-import {getMovies} from "./Api";
+import {getMovies, getImagesMovie} from "./Api";
 import Header from "./Components/Header"
-
+import Main from "./Components/Main"
+import {useState} from "react";
 
 function App() {
 
+    const [movies, setMovies] = useState([]);
+    const baseImgUrl = "https://image.tmdb.org/t/p/original/";
 
-    useEffect(() => {
+    const size = "w300";
+    const handleMovies = () => {
 
         getMovies().then(data => {
-
             return data.json();
-        }).then(data=>{
+        }).then(data => {
 
-            console.log(data);
+            setMovies(data.results);
+            // console.log(`${data.results[0].poster_path.slice(0, -3)}svg`)
         })
+
+    }
+
+
+    useEffect(() => {
+        handleMovies();
     }, []);
 
 
-    return(
+    return (
         <>
             <Header/>
-        </>
+            <Main baseImgUrl={baseImgUrl} movies={movies}/>
 
+
+            {/*{*/}
+            {/*   movies.length>0&&(*/}
+
+            {/*        movies.map(movie=>{*/}
+
+            {/*             return <img src={`${baseImgUrl}/${movie.poster_path}`}  />*/}
+            {/*        })*/}
+            {/*    )*/}
+
+            {/*}*/}
+
+
+        </>
 
 
     )
 
 }
-
-
 
 
 export default App;
