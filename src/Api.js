@@ -17,3 +17,7 @@ export function  getImagesMovie(movie_id){
     return fetch(`https://api.themoviedb.org/3/movie/${movie_id}/images`, options)
         .then(response => response.json());
 }
+
+export function getRatedTvEpisodes(){
+    return fetch('https://api.themoviedb.org/3/movie/popular?language=en-US&page=1',options)
+}

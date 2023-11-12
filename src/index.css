@@ -264,11 +264,66 @@ form {
         color:yellow
     }
 }
+.upnext-container{
 
+    background-image: linear-gradient(rgba(128, 128, 128, 0.18), black);
+}
 .upnext-paragraph{
     color:#EDC400;
     font-weight: 700;
     font-size:20px;
     margin-bottom:10px;
-    border:2px solid red
+    background-color: transparent;
+    padding-top: 10px;
+
+}
+.test{
+    height:100px
+}
+
+.upnext-items{
+    display:flex;
+    flex-direction: column;
+    display:flex;
+    padding-top:20px;
+    gap:30px;
+    background-color: transparent;
+
+}
+.upnext-items img{
+    height:max-content;
+    width:150px;
+}
+
+.upnext-items p:last-of-type{
+
+}
+
+
+.movie-description{
+    /*border:2px solid red;*/
+    font-weight: 700;
+    font-size:20px;
+    color:white;
+    cursor:pointer;
+    padding-top: 10px ;
+    margin:0px;
+    background-color: transparent;
+}
+
+.browse-trailers-text{
+    font-weight: 700;
+    font-size:24px;
+    color:white;
+    cursor:pointer;
+    background-color: transparent;
+    padding-top: 20px;
+}
+
+.browse-trailers-text:hover{
+    color:#EDC400
+}
+
+.trailer-card{
+    background-color: transparent;
 }

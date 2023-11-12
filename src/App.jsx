@@ -10,7 +10,6 @@ function App() {
     const [movies, setMovies] = useState([]);
     const baseImgUrl = "https://image.tmdb.org/t/p/original/";
 
-    const size = "w300";
     const handleMovies = () => {
 
         getMovies().then(data => {
@@ -18,7 +17,6 @@ function App() {
         }).then(data => {
 
             setMovies(data.results);
-            // console.log(`${data.results[0].poster_path.slice(0, -3)}svg`)
         })
 
     }

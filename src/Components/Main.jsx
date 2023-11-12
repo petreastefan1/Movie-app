@@ -2,34 +2,71 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import {useState} from "react";
+import {useEffect, useState} from "react";
+import {getRatedTvEpisodes} from "../Api"
+import ImageCard from "./ImageCard";
+import {forEach} from "react-bootstrap/ElementChildren";
 
-function Main({movies,baseImgUrl}){
+function Main({movies, baseImgUrl}) {
 
-const [posterNumber,setPosterNumber]= useState(0)
+    const [posterNumber, setPosterNumber] = useState(0);
+    const [tvShows, setTvShows] = useState([])
+    const [cardNumbers, setCardNumbers] = useState([0, 1, 2])
+    const handleTVShows = () => {
 
+        getRatedTvEpisodes().then(data => {
+            return data.json();
+        }).then(data => {
 
-const handleArrowRight = ()=>{
-    for(let i =0;i<movies.length-1;i++){
-        if(i==posterNumber && posterNumber != movies.length){
-            setPosterNumber(i+1)
-            console.log(posterNumber)
-        }
-
-    }
-}
-
-const handleArrowLeft = ()=>{
-    for(let i =1;i<movies.length;i++){
-        if(i==posterNumber && posterNumber != 0){
-            setPosterNumber(i-1)
-            console.log(posterNumber)
-        }
-
+            setTvShows(data.results);
+            console.log(data.results)
+        })
     }
 
-}
-    return(
+    useEffect(() => {
+        handleTVShows();
+    }, []);
+
+
+
+
+
+    const handleArrowRight = () => {
+        for (let i = 0; i < movies.length - 1; i++) {
+            if (i == posterNumber && posterNumber != movies.length) {
+                setPosterNumber(i + 1)
+
+            }
+
+        }
+
+        if(cardNumbers[2]<movies.length-1){
+            setCardNumbers(cardNumbers.map(cardNumber=>{
+                return cardNumber+1
+            }))
+            console.log(cardNumbers)
+        }
+
+
+    }
+
+    const handleArrowLeft = () => {
+        for (let i = 1; i < movies.length; i++) {
+            if (i == posterNumber && posterNumber != 0) {
+                setPosterNumber(i - 1)
+            }
+
+        }
+        if(cardNumbers[0] !=0){
+            setCardNumbers(cardNumbers.map(cardNumber=>{
+                return cardNumber-1
+            }))
+            console.log(cardNumbers)
+        }
+
+
+    }
+    return (
         <main>
 
             {movies.length > 0 && (
@@ -50,9 +87,25 @@ const handleArrowLeft = ()=>{
                             </Col>
                             <Col className="upnext-container" sm={4}>
                                 <p className="upnext-paragraph">Up next</p>
-                                <div>
+                                <aside className="upnext-items">
+                                    {
+                                        tvShows.length > 0 && (
+                                            <>
+                                                <ImageCard tvShows={tvShows[cardNumbers[0]]} cardNumber={cardNumbers[0]}/>
+                                                <ImageCard tvShows={tvShows[cardNumbers[1]]} cardNumber={cardNumbers[0]}/>
+                                                <ImageCard tvShows={tvShows[cardNumbers[2]]} cardNumber={cardNumbers[0]}/>
+                                            </>
 
-                                </div>
+                                        )
+                                    }
+                                    <p className="browse-trailers-text">Browse trailers ></p>
+                                    {/*{*/}
+                                    {/*    tvShows.length > 0 && (*/}
+                                    {/*        tvShows.map(show=>{*/}
+                                    {/*            return <img className="test"  src={`${baseImgUrl}/${show.backdrop_path}`}/>*/}
+                                    {/*        })*/}
+                                    {/*)}*/}
+                                </aside>
                             </Col>
                         </Row>
                     </Container>
@@ -62,7 +115,7 @@ const handleArrowLeft = ()=>{
 
 
         </main>
-        )
+    )
 
 
 }
