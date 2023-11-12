@@ -1,6 +1,6 @@
 
 
-function ImageCard({tvShows,cardNumbers}){
+function ImageCard({tvShows}){
 
 
 

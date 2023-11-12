@@ -5,13 +5,14 @@ import Col from "react-bootstrap/Col";
 import {useEffect, useState} from "react";
 import {getRatedTvEpisodes} from "../Api"
 import ImageCard from "./ImageCard";
-import {forEach} from "react-bootstrap/ElementChildren";
+import ModalCard from "./ModalCard";
 
 function Main({movies, baseImgUrl}) {
 
     const [posterNumber, setPosterNumber] = useState(0);
-    const [tvShows, setTvShows] = useState([])
-    const [cardNumbers, setCardNumbers] = useState([0, 1, 2])
+    const [tvShows, setTvShows] = useState([]);
+    const [cardNumbers, setCardNumbers] = useState([0, 1, 2]);
+    const [info, setInfo] = useState(false);
     const handleTVShows = () => {
 
         getRatedTvEpisodes().then(data => {
@@ -44,7 +45,6 @@ function Main({movies, baseImgUrl}) {
             setCardNumbers(cardNumbers.map(cardNumber=>{
                 return cardNumber+1
             }))
-            console.log(cardNumbers)
         }
 
 
@@ -61,9 +61,14 @@ function Main({movies, baseImgUrl}) {
             setCardNumbers(cardNumbers.map(cardNumber=>{
                 return cardNumber-1
             }))
-            console.log(cardNumbers)
         }
 
+
+    }
+
+
+    const handleModalCard = ()=>{
+        setInfo(true)
 
     }
     return (
@@ -78,7 +83,7 @@ function Main({movies, baseImgUrl}) {
                                     <i className="fa-solid fa-arrow-left"></i>
                                 </button>
 
-                                <img className="trailer-img" src={`${baseImgUrl}/${movies[posterNumber].poster_path}`}/>
+                                <img onClick={handleModalCard} className="trailer-img" src={`${baseImgUrl}/${movies[posterNumber].poster_path}`}/>
 
                                 <button onClick={handleArrowRight} className="arrow-right-btn">
                                     <i className="fa-solid fa-arrow-right"></i>
@@ -99,19 +104,20 @@ function Main({movies, baseImgUrl}) {
                                         )
                                     }
                                     <p className="browse-trailers-text">Browse trailers ></p>
-                                    {/*{*/}
-                                    {/*    tvShows.length > 0 && (*/}
-                                    {/*        tvShows.map(show=>{*/}
-                                    {/*            return <img className="test"  src={`${baseImgUrl}/${show.backdrop_path}`}/>*/}
-                                    {/*        })*/}
-                                    {/*)}*/}
                                 </aside>
                             </Col>
                         </Row>
                     </Container>
-                </section>
 
-            )}
+                    {
+                        info == true && (
+                            <>
+                                <ModalCard movie={movies[posterNumber]}/>
+                            </>)
+
+                    }
+
+                </section>)}
 
 
         </main>

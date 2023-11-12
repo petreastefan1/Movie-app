@@ -3,6 +3,7 @@ import {useEffect} from "react";
 import {getMovies, getImagesMovie} from "./Api";
 import Header from "./Components/Header"
 import Main from "./Components/Main"
+import ModalCard from "./Components/ModalCard"
 import {useState} from "react";
 
 function App() {
@@ -29,20 +30,10 @@ function App() {
 
     return (
         <>
+
             <Header/>
             <Main baseImgUrl={baseImgUrl} movies={movies}/>
 
-
-            {/*{*/}
-            {/*   movies.length>0&&(*/}
-
-            {/*        movies.map(movie=>{*/}
-
-            {/*             return <img src={`${baseImgUrl}/${movie.poster_path}`}  />*/}
-            {/*        })*/}
-            {/*    )*/}
-
-            {/*}*/}
 
 
         </>
