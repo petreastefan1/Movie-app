@@ -46,7 +46,7 @@ function App() {
                 browseMovies == true && (
                     <>
                         <Header movies = {movies} searchedMovies={setSearchedMovies} mainPage={setBrowseMovies}/>
-                        <SecondPage movies={movies}/>
+                        <SecondPage searchedMovies={searchedMovies} movies={movies}/>
 
 
                     </>

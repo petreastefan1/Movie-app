@@ -14,19 +14,21 @@ function Header({mainPage, searchedMovies, movies}) {
     const handleSearch = () => {
 
         let aux = []
-        let searchAux = search.current.value.split(" ");
+
+
         movies.map(movie => {
-            let movieAux = movie.original_title.split(" ");
-            for (let i = 0; i < movie.length; i++) {
 
-
-                if (movieAux[i] == searchAux[i]) {
-                    aux.push(movie)
-                }
-
+            if(movie.original_title.toLowerCase().trim().includes(search.current.value.toLowerCase().trim())){
+                aux.push(movie)
             }
         })
-        console.log(searchAux)
+
+        if(aux.length>0){
+            searchedMovies(aux)
+        }
+        if(aux.length<0){
+            searchedMovies([])
+        }
 
     }
     return (
