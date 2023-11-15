@@ -11,7 +11,9 @@ function App() {
 
     const [movies, setMovies] = useState([]);
     const baseImgUrl = "https://image.tmdb.org/t/p/original/";
-    const [browseMovies,setBrowseMovies]= useState(false)
+    const [browseMovies, setBrowseMovies] = useState(false)
+    const [searchedMovies,setSearchedMovies] = useState([])
+
     const handleMovies = () => {
 
         getMovies().then(data => {
@@ -31,25 +33,25 @@ function App() {
     return (
         <>
             {
-                    browseMovies == false && (
-                        <>
-                            <Header mainPage={setBrowseMovies}/>
-                            <Main baseImgUrl={baseImgUrl} movies={movies} setBrowseMovies={setBrowseMovies}/>
-                        </>
+                browseMovies == false && (
+                    <>
+                        <Header movies = {movies} searchedMovies={setSearchedMovies} mainPage={setBrowseMovies}/>
+                        <Main baseImgUrl={baseImgUrl} movies={movies} setBrowseMovies={setBrowseMovies}/>
+                    </>
 
-                    )
+                )
             }
 
             {
                 browseMovies == true && (
                     <>
-                        <Header mainPage={setBrowseMovies}/>
-                            <SecondPage movies={movies}/>
+                        <Header movies = {movies} searchedMovies={setSearchedMovies} mainPage={setBrowseMovies}/>
+                        <SecondPage movies={movies}/>
 
 
                     </>
 
-            )}
+                )}
 
         </>
 

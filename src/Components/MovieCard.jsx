@@ -6,7 +6,6 @@ function MovieCard({imageSource}) {
 
 
     const baseImgUrl = "https://image.tmdb.org/t/p/original/";
-    console.log(imageSource.poster_path)
 
     return (
 

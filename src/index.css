@@ -426,5 +426,6 @@ form {
 
 .description-wrap{
     inline-size: 200px;
-    overflow-wrap: break-word
+    overflow-wrap: break-word;
+    padding-left:10px
 }

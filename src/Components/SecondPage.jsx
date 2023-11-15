@@ -15,7 +15,7 @@ function SecondPage({movies}){
     <main className="second-page-main-container">
         {
             movies.map(movie=>{
-                return <MovieCard imageSource={movie}/>
+                return <MovieCard key={movie.id} imageSource={movie}/>
             })
         }
     </main>

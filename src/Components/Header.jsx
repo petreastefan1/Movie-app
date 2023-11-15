@@ -1,18 +1,34 @@
 import 'bootstrap/dist/css/bootstrap.min.css'
+import {useRef} from "react";
 
+function Header({mainPage, searchedMovies, movies}) {
 
-function Header({mainPage}) {
+    const search = useRef()
 
-    const handleLogo =()=>{
+    const handleLogo = () => {
 
         //to return to first page, main page needs to be false to rework
-            mainPage(false)
-
-
-
-
+        mainPage(false)
     }
 
+    const handleSearch = () => {
+
+        let aux = []
+        let searchAux = search.current.value.split(" ");
+        movies.map(movie => {
+            let movieAux = movie.original_title.split(" ");
+            for (let i = 0; i < movie.length; i++) {
+
+
+                if (movieAux[i] == searchAux[i]) {
+                    aux.push(movie)
+                }
+
+            }
+        })
+        console.log(searchAux)
+
+    }
     return (
         <>
 
@@ -25,8 +41,8 @@ function Header({mainPage}) {
 
                     <form>
                         <label id="search-bar-label" htmlFor="search-bar">All <i className="fa-solid fa-arrow-down"></i></label>
-                        <input type="text" id="search-bar" placeholder="Search IMDb"/>
-                        <i className="fa-solid fa-magnifying-glass"></i>
+                        <input ref={search} type="text" id="search-bar" placeholder="Search IMDb"/>
+                        <i onClick={handleSearch} className="fa-solid fa-magnifying-glass"></i>
 
                     </form>
 

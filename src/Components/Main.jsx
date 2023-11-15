@@ -7,7 +7,7 @@ import {getRatedTvEpisodes} from "../Api"
 import ImageCard from "./ImageCard";
 import ModalCard from "./ModalCard";
 
-function Main({movies, baseImgUrl,setBrowseMovies}) {
+function Main({movies, baseImgUrl, setBrowseMovies}) {
 
     const [posterNumber, setPosterNumber] = useState(0);
     const [tvShows, setTvShows] = useState([]);
@@ -29,9 +29,6 @@ function Main({movies, baseImgUrl,setBrowseMovies}) {
     }, []);
 
 
-
-
-
     const handleArrowRight = () => {
         for (let i = 0; i < movies.length - 1; i++) {
             if (i == posterNumber && posterNumber != movies.length) {
@@ -41,9 +38,9 @@ function Main({movies, baseImgUrl,setBrowseMovies}) {
 
         }
 
-        if(cardNumbers[2]<movies.length-1){
-            setCardNumbers(cardNumbers.map(cardNumber=>{
-                return cardNumber+1
+        if (cardNumbers[2] < movies.length - 1) {
+            setCardNumbers(cardNumbers.map(cardNumber => {
+                return cardNumber + 1
             }))
         }
 
@@ -57,9 +54,9 @@ function Main({movies, baseImgUrl,setBrowseMovies}) {
             }
 
         }
-        if(cardNumbers[0] !=0){
-            setCardNumbers(cardNumbers.map(cardNumber=>{
-                return cardNumber-1
+        if (cardNumbers[0] != 0) {
+            setCardNumbers(cardNumbers.map(cardNumber => {
+                return cardNumber - 1
             }))
         }
 
@@ -67,13 +64,13 @@ function Main({movies, baseImgUrl,setBrowseMovies}) {
     }
 
 
-    const handleModalCard = ()=>{
+    const handleModalCard = () => {
         setInfo(true)
 
     }
 
 
-    const handleBrowseMovies = ()=>{
+    const handleBrowseMovies = () => {
 
         setBrowseMovies(true)
 
@@ -90,7 +87,8 @@ function Main({movies, baseImgUrl,setBrowseMovies}) {
                                     <i className="fa-solid fa-arrow-left"></i>
                                 </button>
 
-                                <img onClick={handleModalCard} className="trailer-img" src={`${baseImgUrl}/${movies[posterNumber].poster_path}`}/>
+                                <img onClick={handleModalCard} className="trailer-img"
+                                     src={`${baseImgUrl}/${movies[posterNumber].poster_path}`}/>
 
                                 <button onClick={handleArrowRight} className="arrow-right-btn">
                                     <i className="fa-solid fa-arrow-right"></i>
