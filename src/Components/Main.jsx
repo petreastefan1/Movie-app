@@ -7,7 +7,7 @@ import {getRatedTvEpisodes} from "../Api"
 import ImageCard from "./ImageCard";
 import ModalCard from "./ModalCard";
 
-function Main({movies, baseImgUrl}) {
+function Main({movies, baseImgUrl,setBrowseMovies}) {
 
     const [posterNumber, setPosterNumber] = useState(0);
     const [tvShows, setTvShows] = useState([]);
@@ -71,6 +71,13 @@ function Main({movies, baseImgUrl}) {
         setInfo(true)
 
     }
+
+
+    const handleBrowseMovies = ()=>{
+
+        setBrowseMovies(true)
+
+    }
     return (
         <main>
 
@@ -103,7 +110,7 @@ function Main({movies, baseImgUrl}) {
 
                                         )
                                     }
-                                    <p className="browse-trailers-text">Browse trailers ></p>
+                                    <p onClick={handleBrowseMovies} className="browse-trailers-text">Browse Movies ></p>
                                 </aside>
                             </Col>
                         </Row>
@@ -112,12 +119,15 @@ function Main({movies, baseImgUrl}) {
                     {
                         info == true && (
                             <>
-                                <ModalCard movie={movies[posterNumber]}/>
+                                <ModalCard movie={movies[posterNumber]} setInfo={setInfo}/>
                             </>)
 
                     }
 
-                </section>)}
+                </section>
+
+
+            )}
 
 
         </main>

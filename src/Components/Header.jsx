@@ -1,14 +1,24 @@
 import 'bootstrap/dist/css/bootstrap.min.css'
 
 
-function Header() {
+function Header({mainPage}) {
+
+    const handleLogo =()=>{
+
+        //to return to first page, main page needs to be false to rework
+            mainPage(false)
+
+
+
+
+    }
 
     return (
         <>
 
             <header className="header-container">
                 <div className="nav-bar">
-                    <p className="logo-container">IMDb</p>
+                    <p onClick={handleLogo} className="logo-container">IMDb</p>
                     <div className="menu-container">
                         <button className="menu-btn menu-dropdown"><i className="fa-solid fa-bars"></i>Menu</button>
                     </div>

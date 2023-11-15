@@ -3,14 +3,15 @@ import {useEffect} from "react";
 import {getMovies, getImagesMovie} from "./Api";
 import Header from "./Components/Header"
 import Main from "./Components/Main"
-import ModalCard from "./Components/ModalCard"
+import SecondPage from "./Components/SecondPage";
+import MovieCard from "./Components/MovieCard"
 import {useState} from "react";
 
 function App() {
 
     const [movies, setMovies] = useState([]);
     const baseImgUrl = "https://image.tmdb.org/t/p/original/";
-
+    const [browseMovies,setBrowseMovies]= useState(false)
     const handleMovies = () => {
 
         getMovies().then(data => {
@@ -22,7 +23,6 @@ function App() {
 
     }
 
-
     useEffect(() => {
         handleMovies();
     }, []);
@@ -30,11 +30,26 @@ function App() {
 
     return (
         <>
+            {
+                    browseMovies == false && (
+                        <>
+                            <Header mainPage={setBrowseMovies}/>
+                            <Main baseImgUrl={baseImgUrl} movies={movies} setBrowseMovies={setBrowseMovies}/>
+                        </>
 
-            <Header/>
-            <Main baseImgUrl={baseImgUrl} movies={movies}/>
+                    )
+            }
+
+            {
+                browseMovies == true && (
+                    <>
+                        <Header mainPage={setBrowseMovies}/>
+                            <SecondPage movies={movies}/>
 
 
+                    </>
+
+            )}
 
         </>
 

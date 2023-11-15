@@ -9,7 +9,7 @@ function ImageCard({tvShows}){
     return (
         <>
             <div className="trailer-card">
-                <img className="test"  src={`${baseImgUrl}/${tvShows.backdrop_path}`}/>
+                <img src={`${baseImgUrl}/${tvShows.backdrop_path}`}/>
                 <p className="movie-description">{tvShows.original_title}</p>
             </div>
 
