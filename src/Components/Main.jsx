@@ -14,13 +14,7 @@ function Main({movies, baseImgUrl, setBrowseMovies}) {
     const [cardNumbers, setCardNumbers] = useState([0, 1, 2]);
     const [info, setInfo] = useState(false);
     const handleTVShows = async () => {
-
-        // getRatedTvEpisodes().then(data => {
-        //     return data.json();
-        // }).then(data => {
-        //
-        //     setTvShows(data.results);
-        // })
+        
 
         let response = await getRatedTvEpisodes();
 
