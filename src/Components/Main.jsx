@@ -13,15 +13,21 @@ function Main({movies, baseImgUrl, setBrowseMovies}) {
     const [tvShows, setTvShows] = useState([]);
     const [cardNumbers, setCardNumbers] = useState([0, 1, 2]);
     const [info, setInfo] = useState(false);
-    const handleTVShows = () => {
+    const handleTVShows = async () => {
 
-        getRatedTvEpisodes().then(data => {
-            return data.json();
-        }).then(data => {
+        // getRatedTvEpisodes().then(data => {
+        //     return data.json();
+        // }).then(data => {
+        //
+        //     setTvShows(data.results);
+        // })
 
-            setTvShows(data.results);
-            console.log(data.results)
-        })
+        let response = await getRatedTvEpisodes();
+
+        let data = await response.json();
+
+        setTvShows(data.results)
+
     }
 
     useEffect(() => {

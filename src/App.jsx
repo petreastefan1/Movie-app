@@ -14,14 +14,14 @@ function App() {
     const [browseMovies, setBrowseMovies] = useState(false)
     const [searchedMovies,setSearchedMovies] = useState([])
 
-    const handleMovies = () => {
+    const handleMovies =async () => {
 
-        getMovies().then(data => {
-            return data.json();
-        }).then(data => {
 
-            setMovies(data.results);
-        })
+        let response = await  getMovies();
+
+        let data= await  response.json();
+        setMovies(data.results);
+
 
     }
 
